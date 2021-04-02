@@ -1,6 +1,6 @@
 # 题目
 
-![1001](https://github.com/xzr159357/algorithm-problem/blob/main/PTA刷题/img-floder/1001.png)
+![1001](./img-floder/1001.png)
 
 # 代码
 
