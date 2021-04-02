@@ -1,6 +1,6 @@
 # 题目
 
-![image-20210401221507468](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20210401221507468.png)
+![1001](https://github.com/xzr159357/algorithm-problem/blob/main/PTA刷题/img-floder/1001.png)
 
 # 代码
 
