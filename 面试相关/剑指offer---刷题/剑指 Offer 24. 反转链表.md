@@ -67,9 +67,9 @@ public:
         {
             //每个节点都往头部插入，实现反转
             ListNode* tmp = newHead->next;
-            newHead->next = head;
-            head = head->next;//这一步，必须在此位置
-            newHead->next->next = tmp;
+            newHead->next = head;//头插入
+            head = head->next;//这一步，必须在此位置，往后偏移
+            newHead->next->next = tmp;//插入结点的下一个结点的配置
         }
         return newHead->next;
     }

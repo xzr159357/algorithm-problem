@@ -119,3 +119,93 @@ int main()
 }
 ```
 
+
+
+
+
+# 三、代码二
+
+```cpp
+#include <iostream>
+using namespace std;
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <string>
+#include <vector>
+#include <list>
+
+
+#define INF 32767
+#define MAX 5
+int dist[MAX];
+int path[MAX];
+int A[MAX][MAX];
+bool isCheck[MAX];//是否已经加入集合
+
+void dijkstra(int v)//求得v到其他顶点的最短路径
+{
+    
+    int n = MAX;
+    
+    dist[v] = 0;
+    path[v] = -1;
+    
+    /* 以下遍历n-1次，找到v到各节点的最短路径 */
+    for (int i = 0; i < n; i++)
+    {
+        int u = -1, minLen = INF;
+        /* 找到下一个加入集合的节点，在未入集合且可被选中的节点中找最短路径 */
+        for (int j = 0; j < n; j++)
+        {
+            if (!isCheck[j] && dist[j] < minLen)
+            {
+                minLen = dist[j];//更新找到的最短路径
+                u = j;//找到下标
+            }
+        }
+        /************************************/
+        isCheck[u] = true;
+        /* 新加入结点后，修改到各节点的最短路径 */
+        for (int j = 0; j < n; j++)
+        {
+            if (!isCheck[j] && A[u][j] != INF)
+            {
+                if (dist[u] + A[u][j] < dist[j])//dist[u]+A[u][j]即为v到j的路径，可以理解为在之前到u的基础上加上到其他结点的距离，并与之前dist[j]取最小
+                {
+                    dist[j] = dist[u] + A[u][j];//更新最短路径
+                    path[j] = u;//修改前驱
+                }
+            }
+        }
+    }
+
+}
+
+
+int main()
+{
+    
+    fill(A[0], A[0] + MAX * MAX, INF);
+    fill(dist, dist + MAX, INF);
+    A[0][1] = 10;
+    A[0][4] = 5;
+    A[1][2] = 1;
+    A[1][4] = 2;
+    A[2][3] = 4;
+    A[3][0] = 7;
+    A[3][2] = 6;
+    A[4][1] = 3;
+    A[4][2] = 9;
+    A[4][3] = 2;
+
+    dijkstra(0);
+    for (int i = 0; i < MAX; i++)
+    {
+        cout << dist[i] << " " << path[i] << endl;
+    }
+    
+    
+}
+```
+

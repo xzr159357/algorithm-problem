@@ -70,3 +70,56 @@ int main()
 }
 ```
 
+
+
+
+
+# 二刷
+
+思路还是通过map来比较好，注意输出精度和0即可。
+
+```cpp
+#include <iostream>
+using namespace std;
+#include <map>
+
+int main()
+{
+    int n;
+    cin >> n;
+    map<int, double> myMap;
+    for (int i = 0; i < n; i++)
+    {
+        int c1;
+        double c2;
+        cin >> c1 >> c2;
+        myMap[c1] += c2;
+    }
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int c1;
+        double c2;
+        cin >> c1 >> c2;
+        myMap[c1] += c2;
+    }
+    n = myMap.size();
+    for (auto num : myMap)
+    {
+        if (num.second == 0)
+            n--;
+    }
+    cout << n;
+    for (auto it = myMap.rbegin(); it != myMap.rend(); it++)
+    {
+        if (it->second != 0)
+        {
+            printf(" %d %.1lf", it->first, it->second);
+        }
+    }
+
+
+
+    return 0;
+}
+```
